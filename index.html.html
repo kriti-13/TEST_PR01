@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> My Personal Portfolio</title>
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box
+}
+body{
+font-family:Arial;
+background:#9c0606;
+color:#0a0000
+}
+body.dark{
+background:#222;
+color:#fff
+}
+.header{
+background:#5cb85c;
+padding:20px;
+text-align:center;
+color:#fff
+}
+.btn{
+background:#333;
+color:#fff;
+border:none;
+padding:8px 15px;
+cursor:pointer;
+margin:10px
+}
+.section{
+max-width:800px;
+margin:20px auto;
+background:#fff;
+padding:20px;
+border-radius:5px
+}
+body.dark .section{background:#333}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:15px 0}
+.box{background:#f5f5f5;padding:15px;border-radius:5px}
+body.dark .box{background:#444}
+input,textarea{width:100%;padding:8px;margin:5px 0;border:1px solid #ccc}
+body.dark input,body.dark textarea{background:#555;color:#fff;border-color:#666}
+.error{color:red;font-size:12px;display:none}
+.ok{background:#5cb85c;color:#fff;padding:10px;display:none;margin-top:10px}
+@media(max-width:600px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="header"><h1>My Portfolio</h1>
+    <button class="btn" onclick="document.body.classList.toggle('dark')">Theme</button></div>
+<div class="section"><h2>About Me </h2><p>I am Web Developer learing HTML and CSS</p></div>
+<div class="section"><h2>My Skills </h2><div class="grid"><div class="square"><h3>HTML</h3><p>Beginer</p></div><div class="box"><h3>CSS</h3><p>Beginer</p></div><div class="box"><h4>DevOps</h4><p>Beginer</p></div><div class="rectangle"><h3>Python</h3><p>Beginer</p></div></div></div></div></div>
+<div class="section"><h2>My Projects</h2><div class="grid"><div class="box"><h3>Website</h3><p>Finace Tracker</p></div><div class="box"><h3>App</h3><p>Calculator</p></div></div></div>
+<div class="section"><h2>My Contact</h2><form id="f" onsubmit="return validateForm(event)"><input type="text" id="n" placeholder="My Name"><span class="error" id="e1">Name required</span><input type="text" id="e" placeholder="My Email"><span class="error" id="e2">Email required</span><textarea id="m" placeholder="Ping ME"></textarea><span class="error" id="e3">Message required</span><button class="btn" type="Submit">Send</button><div class="ok" id="ok">Sent!</div></form></div>
+<script>
+function validateForm(event){event.preventDefault();
+let valid=true;
+let name=document.getElementById('n').value;
+let email=document.getElementById('e').value;let msg=document.getElementById('m').value;
+if(name.length<2){document.getElementById('e1').style.display='block';
+valid=false}
+else{
+    document.getElementById('e1').style.display='none'}
+if(!email.includes('@'))
+{document.getElementById('e2').style.display='block';valid=false}
+else{document.getElementById('e2').style.display='none'}
+if(msg.length<5){document.getElementById('e3').style.display='block';valid=false}
+else{document.getElementById('e3').style.display='none'}if(valid){document.getElementById('ok').style.display='block';
+document.getElementById('f').reset();setTimeout(()=>document.getElementById('ok').style.display='none',3000)
+}
+return false
+}
+</script>
+</body>
+</html>
